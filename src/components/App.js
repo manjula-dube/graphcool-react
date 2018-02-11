@@ -12,18 +12,28 @@ query hello {
   }
 }`;
 
+
+
 class App extends Component {
-  
+
    render() {
 
      let { data } = this.props
-     console.log(data)
+
+     if (data.loading) {
+        return (<div>Loading</div>)
+     }
+
+     if(data.error) {
+       return (<div>An unexpected error occurred</div>)
+     }
+
      return (
        <div className="App">
          <div className="App-header">
            <img src={logo} className="App-logo" alt="logo" />
            <h2>Welcome to Apollo</h2>
-           <h3>hhh</h3>
+           <h3>{data.hello}</h3>
          </div>
        </div>
      );
