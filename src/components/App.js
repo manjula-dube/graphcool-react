@@ -12,8 +12,6 @@ query hello {
   }
 }`;
 
-
-
 class App extends Component {
 
    render() {
