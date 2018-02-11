@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
- import logo from '../logo.svg';
- import '../styles/App.css';
-const ChannelsList = () =>
+import logo from '../logo.svg';
+import '../styles/App.css';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const client = new ApolloClient({
+  // By default, this client will send queries to the
+  //  `/graphql` endpoint on the same host
+  link: new HttpLink(),
+  cache: new InMemoryCache()
+});
+
+const HelloWorld = () =>
      (<ul>
-       <li>Channel 1</li>
-       <li>Channel 2</li>
+       <li>HelloWorld</li>
      </ul>);
 class App extends Component {
    render() {
@@ -14,7 +25,7 @@ class App extends Component {
            <img src={logo} className="App-logo" alt="logo" />
            <h2>Welcome to Apollo</h2>
          </div>
-         <ChannelsList />
+         <HelloWorld />
        </div>
      );
    }
