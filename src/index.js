@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../src/styles/index.css';
 import App from '../src/components/App';
-import registerServiceWorker from './registerServiceWorker';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -24,4 +23,4 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-registerServiceWorker();
+

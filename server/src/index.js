@@ -7,7 +7,7 @@ const typeDefs = `
 `
 
 const opts = {
-  port: 9000 //configurable port no
+  port: 4000 //configurable port no
 }
 
 const resolvers = {
