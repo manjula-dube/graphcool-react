@@ -5,46 +5,28 @@ import logo from '../logo.svg';
 import '../styles/App.css';
 
 
-const ChannelsList = ({ data: {loading, error, channels }}) => {
-  if (loading) {
-    return <p>Loading ...</p>;
+const MY_QUERY = gql`query {
+   message { 
+     text
   }
-  if (error) {
-    return <p>{error.message}</p>;
-  }
+}`;
 
-  return <ul>
-    { channels.map( ch => <li key={ch.id}>{ch.name}</li> ) }
-  </ul>;
-};
-
-const channelsListQuery = gql`
-  query ChannelsListQuery {
-    channels {
-      id
-      name
-    }
-  }
-`;
-
-const ChannelsListWithData = graphql(channelsListQuery)(ChannelsList);
-
-
-const HelloWorld = () =>
-     (<ul>
-       <li>HelloWorld</li>
-     </ul>);
 class App extends Component {
+  
    render() {
+
+     let { data } = this.props
      return (
        <div className="App">
          <div className="App-header">
            <img src={logo} className="App-logo" alt="logo" />
            <h2>Welcome to Apollo</h2>
+           <h3>{data.message.text}</h3>
          </div>
-         <HelloWorld />
        </div>
      );
    }
  }
+
+App = graphql(MY_QUERY)(App); 
 export default App;
