@@ -4,14 +4,6 @@ import { graphql } from 'react-apollo';
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-
-const MY_QUERY = gql`
-query hello {
-  hello(name: $name) {
-    name
-  }
-}`;
-
 class App extends Component {
 
    render() {
@@ -31,12 +23,17 @@ class App extends Component {
          <div className="App-header">
            <img src={logo} className="App-logo" alt="logo" />
            <h2>Welcome to Apollo</h2>
-           <h3>{data.hello.name}</h3>
+           <h3>{data.name}</h3>
          </div>
        </div>
      );
    }
  }
+
+const MY_QUERY = gql`
+  query hello($name: String) {
+    hello(name: $name)
+  }`;
 
 const AppWithData = graphql(MY_QUERY)(App); 
 export default AppWithData;
