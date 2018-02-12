@@ -7,7 +7,7 @@ import '../styles/App.css';
 
 const MY_QUERY = gql`
 query hello {
-  hello(name: "__NAME__") {
+  hello(name: $name) {
     name
   }
 }`;
@@ -31,7 +31,7 @@ class App extends Component {
          <div className="App-header">
            <img src={logo} className="App-logo" alt="logo" />
            <h2>Welcome to Apollo</h2>
-           <h3>{data.hello}</h3>
+           <h3>{data.hello.name}</h3>
          </div>
        </div>
      );
